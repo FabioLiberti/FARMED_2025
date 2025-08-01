@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrice RACI - Reingegnerizzazione SIGES Flusso F</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 1cm;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 11px;
+            line-height: 1.4;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #0066cc;
+            padding-bottom: 10px;
+        }
+        
+        .project-info {
+            background-color: #f0f8ff;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid #0066cc;
+        }
+        
+        h1 {
+            color: #0066cc;
+            font-size: 18px;
+            margin: 0;
+        }
+        
+        h2 {
+            color: #0066cc;
+            font-size: 14px;
+            margin: 15px 0 8px 0;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 3px;
+        }
+        
+        h3 {
+            color: #333;
+            font-size: 12px;
+            margin: 12px 0 6px 0;
+        }
+        
+        .legend {
+            background-color: #fffacd;
+            padding: 8px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+            font-size: 9px;
+        }
+        
+        th, td {
+            border: 1px solid #ccc;
+            padding: 4px;
+            text-align: center;
+            vertical-align: middle;
+        }
+        
+        th {
+            background-color: #0066cc;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .activity-col {
+            text-align: left;
+            font-weight: bold;
+            background-color: #f8f9fa;
+            min-width: 200px;
+        }
+        
+        .raci-r { background-color: #e8f5e8; font-weight: bold; }
+        .raci-a { background-color: #ffe8e8; font-weight: bold; }
+        .raci-c { background-color: #fff8e8; }
+        .raci-i { background-color: #f0f8ff; }
+        
+        .section-divider {
+            page-break-before: always;
+            border-top: 3px solid #0066cc;
+            margin-top: 20px;
+            padding-top: 15px;
+        }
+        
+        .roles-section {
+            background-color: #f8f9fa;
+            padding: 10px;
+            margin: 15px 0;
+            border: 1px solid #ddd;
+        }
+        
+        .role-item {
+            margin-bottom: 8px;
+        }
+        
+        .role-title {
+            font-weight: bold;
+            color: #0066cc;
+        }
+        
+        ul {
+            margin: 5px 0;
+            padding-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 2px;
+        }
+        
+        .timeline {
+            background-color: #f0f8ff;
+            padding: 10px;
+            margin: 10px 0;
+            border-left: 4px solid #0066cc;
+        }
+        
+        .notes {
+            background-color: #fffacd;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            font-size: 10px;
+        }
+        
+        .opbg-header {
+            background-color: #e8f5e8;
+            padding: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #28a745;
+        }
+        
+        .stakeholder-info {
+            background-color: #f8f9fa;
+            padding: 8px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+        }
+        
+        .person-role {
+            margin-bottom: 5px;
+            font-size: 10px;
+        }
+        
+        .person-name {
+            font-weight: bold;
+        }
+        
+        .person-title {
+            color: #666;
+        }
+        
+        .special-role {
+            color: #dc3545;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Matrice RACI - Reingegnerizzazione SIGES Flusso F</h1>
+    </div>
+    
+    <div class="project-info">
+        <strong>Progetto:</strong> Sistema Regionale SIGES - Reingegnerizzazione Flusso Farmaci (Distribuzione Diretta)<br>
+        <strong>Data:</strong> Agosto 2025<br>
+        <strong>Responsabile:</strong> Area Farmaci e Dispositivi - Regione Lazio
+    </div>
+    
+    <div class="legend">
+        <h3>Legenda RACI:</h3>
+        <strong>R</strong> = Responsible (Responsabile dell'esecuzione) | 
+        <strong>A</strong> = Accountable (Garante del risultato - uno solo per attività) | 
+        <strong>C</strong> = Consulted (Consultato - fornisce input) | 
+        <strong>I</strong> = Informed (Informato - riceve comunicazioni)
+    </div>
+    
+    <h2>Matrice RACI Generale</h2>
+    
+    <table>
+        <thead>
+            <tr>
+                <th class="activity-col">Attività/Deliverable</th>
+                <th>Area Farmaci<br>Regione Lazio</th>
+                <th>LAZIOcrea<br>S.p.A</th>
+                <th>Responsabili ICT<br>Aziendali</th>
+                <th>Referenti Flussi<br>Informativi Aziendali</th>
+                <th>Software<br>House</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="activity-col">Definizione specifiche funzionali</td>
+                <td class="raci-a">A</td>
+                <td class="raci-r">R</td>
+                <td class="raci-c">C</td>
+                <td class="raci-c">C</td>
+                <td class="raci-i">I</td>
+            </tr>
+            <tr>
+                <td class="activity-col">Consolidamento documento funzionale</td>
+                <td class="raci-a">A</td>
+                <td class="raci-r">R</td>
+                <td class="raci-c">C</td>
+                <td class="raci-c">C</td>
+                <td class="raci-i">I</td>
+            </tr>
+            <tr>
+                <td class="activity-col">Sviluppo sistema XML</td>
+                <td class="raci-c">C</td>
+                <td class="raci-a">A</td>
+                <td class="raci-i">I</td>
+                <td class="raci-i">I</td>
+                <td class="raci-r">R</td>
+            </tr>
+            <tr>
+                <td class="activity-col">Implementazione cooperazione applicativa M2M</td>
+                <td class="raci-c">C</td>
+                <td class="raci-a">A</td>
+                <td class="raci-r">R</td>
+                <td class="raci-i">I</td>
+                <td class="raci-r">R</td>
+            </tr>
+            <tr>
+                <td class="activity-col">Aggiornamento infrastruttura SIGES</td>
+                <td class="raci-c">C</td>
+                <td class="raci-a">A</td>
+                <td class="raci-i">I</td>
+                <td class="raci-i">I</td>
+                <td class="raci-i">I</td>
+            </tr>
+            <tr>
+                <td class="activity-col">Adeguamento sistemi aziendali</td>
+                <td class="raci-i">I</td>
+                <td class="raci-c">C</td>
+                <td class="raci-a">A</td>
+                <td class="raci-c">C</td>
+                <td class="raci-r">R</td>
+            </tr>
+            <tr>
+                <td class="activity-col">Test di sperimentazione con aziende pilota</td>
+                <td class="raci-c">C</td>
+                <td class="raci-r">R</td>
+                <td class="raci-a">A</td>
+                <td class="raci-c">C</td>
+                <td class="raci-c">C</td>
+            </tr>
+            <tr>
+                <td class="activity-col">Formazione referenti aziendali</td>
+                <td class="raci-a">A</td>
+                <td class="raci-r">R</td>
+                <td class="raci-c">C</td>
+                <td class="raci-r">R</td>
+                <td class="raci-i">I</td>
+            </tr>
+            <tr>
+                <td class="activity-col">Validazione tracciati XML</td>
+                <td class="raci-c">C</td>
+                <td class="raci-r">R</td>
+                <td class="raci-a">A</td>
+                <td class="raci-c">C</td>
+                <td class="raci-c">C</td>
+            </tr>
+            <tr>
+                <td class="activity-col">Collaudo sistema</td>
+                <td class="raci-c">C</td>
+                <td class="raci-a">A</td>
+                <td class="raci-r">R</td>
+                <td class="raci-c">C</td>
+                <td class="raci-i">I</td>
+            </tr>
+            <tr>
+                <td class="activity-col">Avvio a regime nuovo sistema</td>
+                <td class="raci-a">A</td>
+                <td class="raci-r">R</td>
+                <td class="raci-c">C</td>
+                <td class="raci-c">C</td>
+                <td class="raci-i">I</td>
+            </tr>
+            <tr>
+                <td class="activity-col">Coordinamento tavoli tecnici</td>
+                <td class="raci-a">A</td>
+                <td class="raci-c">C</td>
+                <td class="raci-r">R</td>
+                <td class="raci-c">C</td>
+                <td class="raci-i">I</td>
+            </tr>
+            <tr>
+                <td class="activity-col">Monitoraggio conformità NSIS</td>
+                <td class="raci-a">A</td>
+                <td class="raci-r">R</td>
+                <td class="raci-i">I</td>
+                <td class="raci-i">I</td>
+                <td class="raci-i">I</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div class="roles-section">
+        <h3>Ruoli coinvolti:</h3>
+        
+        <div class="role-item">
+            <div class="role-title">Area Farmaci e Dispositivi - Regione Lazio</div>
+            <ul>
+                <li>Direzione e coordinamento del progetto</li>
+                <li>Definizione requisiti funzionali</li>
+                <li>Supervisione conformità normativa</li>
+                <li>Approvazione deliverable</li>
+            </ul>
+        </div>
+        
+        <div class="role-item">
+            <div class="role-title">LAZIOcrea S.p.A</div>
+            <ul>
+                <li>Direzione Sistemi Informativi</li>
+                <li>Sviluppo e implementazione tecnica</li>
+                <li>Gestione infrastruttura regionale</li>
+                <li>Supporto tecnico specialistico</li>
+            </ul>
+        </div>
+        
+        <div class="role-item">
+            <div class="role-title">Responsabili ICT Aziendali</div>
+            <ul>
+                <li>Coordinamento tecnico aziendale</li>
+                <li>Interfaccia con Software House</li>
+                <li>Gestione adeguamenti infrastruttura locale</li>
+                <li>Supervisione test e collaudo</li>
+            </ul>
+        </div>
+        
+        <div class="role-item">
+            <div class="role-title">Referenti Flussi Informativi Aziendali</div>
+            <ul>
+                <li>Competenza funzionale sui flussi</li>
+                <li>Validazione dati e controlli</li>
+                <li>Formazione operatori</li>
+                <li>Supporto nell'implementazione</li>
+            </ul>
+        </div>
+        
+        <div class="role-item">
+            <div class="role-title">Software House</div>
+            <ul>
+                <li>Sviluppo adeguamenti sistemi aziendali</li>
+                <li>Implementazione tracciati XML</li>
+                <li>Sviluppo interfacce M2M</li>
+                <li>Supporto tecnico specializzato</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="notes">
+        <h3>Note:</h3>
+        <ul>
+            <li>Timeline progetto: Settembre 2025 - Giugno 2026</li>
+            <li>Ogni attività deve avere almeno un <strong>R</strong> e un <strong>A</strong></li>
+            <li>La matrice sarà rivista durante gli incontri tecnici programmati</li>
+            <li>Focus prioritario sul Flusso F (Distribuzione Diretta) come indicato nella presentazione del 03/07/2025</li>
+        </ul>
+    </div>
+    
+    <!-- SEZIONE OPBG -->
+    <div class="section-divider">
+        <div class="opbg-header">
+            <h1>Matrice RACI di Dettaglio - OPBG (Ospedale Pediatrico Bambino Gesù)</h1>
+        </div>
+        
+        <div class="project-info">
+            <strong>Progetto:</strong> Reingegnerizzazione Flusso Farmaci (FARMED/File F) - OPBG<br>
+            <strong>Data:</strong> Agosto 2025<br>
+            <strong>Responsabile Aziendale:</strong> Fabio Liberti (PM OPBG)
+        </div>
+        
+        <div class="stakeholder-info">
+            <h3>Stakeholder OPBG identificati:</h3>
+            
+            <div class="person-role">
+                <span class="person-name">Donatelli David</span>: <span class="person-title">Sistemi Informativi (File F)</span>
+            </div>
+            <div class="person-role">
+                <span class="person-name">Liberti Fabio</span>: <span class="person-title">Gestione Amministrativa Ciclo Attivo (FARMED)</span> - <span class="special-role">PM Progetto</span>
+            </div>
+            <div class="person-role">
+                <span class="person-name">Pelosi Simone</span>: <span class="person-title">Sistemi Informativi (FARMED, Architetture/Integrazioni)</span> - <span class="special-role">Referente Tecnologico Regione</span>
+            </div>
+            <div class="person-role">
+                <span class="person-name">Corsetti Tiziana</span>: <span class="person-title">Farmacia (File F, FARMED)</span> - <span class="special-role">Referente Clinico Regione</span>
+            </div>
+            <div class="person-role">
+                <span class="person-name">Brusco Carla</span>: <span class="person-title">Servizio Informativo Ospedaliero (Anagrafiche Assistiti)</span>
+            </div>
+            
+            <h3>Referenti per il progetto:</h3>
+            <ul>
+                <li><strong>PM OPBG:</strong> Fabio Liberti (Coordinamento generale progetto e BK Referente Tecnologico con Regione)</li>
+                <li><strong>Referente Tecnologico con Regione:</strong> Simone Pelosi (Interfaccia tecnica)</li>
+                <li><strong>Referente Clinico con Regione:</strong> Tiziana Corsetti (Interfaccia funzionale/clinica)</li>
+            </ul>
+        </div>
+        
+        <h2>Matrice RACI Dettagliata OPBG</h2>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th class="activity-col">Attività/Deliverable</th>
+                    <th>Liberti F.<br>(PM)</th>
+                    <th>Donatelli D.<br>(SI File F)</th>
+                    <th>Pelosi S.<br>(SI-Ref.Tecn.)</th>
+                    <th>Corsetti T.<br>(Farm-Ref.Clin.)</th>
+                    <th>Brusco C.<br>(SIO)</th>
+                    <th>Software House<br>OPBG</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="activity-col">Coordinamento generale progetto</td>
+                    <td class="raci-a">A</td>
+                    <td class="raci-r">R</td>
+                    <td class="raci-r">R</td>
+                    <td class="raci-r">R</td>
+                    <td class="raci-c">C</td>
+                    <td class="raci-i">I</td>
+                </tr>
+                <tr>
+                    <td class="activity-col">Interfaccia tecnologica con Regione</td>
+                    <td class="raci-r">R</td>
+                    <td class="raci-c">C</td>
+                    <td class="raci-a">A</td>
+                    <td class="raci-i">I</td>
+                    <td class="raci-i">I</td>
+                    <td class="raci-c">C</td>
+                </tr>
+                <tr>
+                    <td class="activity-col">Interfaccia clinica/funzionale con Regione</td>
+                    <td class="raci-c">C</td>
+                    <td class="raci-i">I</td>
+                    <td class="raci-c">C</td>
+                    <td class="raci-a">A</td>
+                    <td class="raci-i">I</td>
+                    <td class="raci-i">I</td>
+                </tr>
+                <tr>
+                    <td class="activity-col">Analisi impatti sistemici File F</td>
+                    <td class="raci-c">C</td>
+                    <td class="raci-a">A</td>
+                    <td class="raci-r">R</td>
+                    <td class="raci-c">C</td>
+                    <td class="raci-i">I</td>
+                    <td class="raci-c">C</td>
+                </tr>
+                <tr>
+                    <td class="activity-col">Mappatura dati FARMED esistenti</td>
+                    <td class="raci-a">A</td>
+                    <td class="raci-c">C</td>
+                    <td class="raci-r">R</td>
+                    <td class="raci-r">R</td>
+                    <td class="raci-i">I</td>
+                    <td class="raci-c">C</td>
+                </tr>
+                <tr>
+                    <td class="activity-col">Progettazione adeguamenti XML</td>
+                    <td class="raci-r">R</td>
+                    <td class="raci-r">R</td>
+                    <td class="raci-a">A</td>
+                    <td class="raci-c">C</td>
+                    <td class="raci-i">I</td>
+                    <td class="raci-r">R</td>
+                </tr>
+                <tr>
+                    <td class="activity-col">Sviluppo interfacce M2M</td>
+                    <td class="raci-c">C</td>
+                    <td class="raci-c">C</td>
+                    <td class="raci-a">A</td>
+                    <td class="raci-i">I</td>
+                    <td class="raci-i">I</td>
+                    <td class="raci-r">R</td>
+                </tr>
+                <tr>
+                    <td class="activity-col">Configurazione sistema contabilità</td>
+                    <td class="raci-a">A</td>
+                    <td class="raci-c">C</td>
+                    <td class="raci-r">R</td>
+                    <td class="raci-c">C</td>
+                    <td class="raci-i">I</td>
+                    <td class="raci-r">R</td>
+                </tr>
+                <tr>
+                    <td class="activity-col">Adeguamento flusso farmacia</td>
+                    <td class="raci-c">C</td>
+                    <td class="raci-i">I</td>
+                    <td class="raci-c">C</td>
+                    <td class="raci-a">A</td>
+                    <td class="raci-i">I</td>
+                    <td class="raci-r">R</td>
+                </tr>
+                <tr>
+                    <td class="activity-col">Integrazione anagrafiche SIO</td>
+                    <td class="raci-c">C</td>
+                    <td class="raci-c">C</td>
+                    <td class="raci-c">C</td>
+                    <td class="raci-i">I</td>
+                    <td class="raci-a">A</td>
+                    <td class="raci-r">R</td>
+                </tr>
+                <tr>
+                    <td class="activity-col">Validazione funzionale File F</td>
+                    <td class="raci-c">C</td>
+                    <td class="raci-a">A</td>
+                    <td class="raci-c">C</td>
+                    <td class="raci-r">R</td>
+                    <td class="raci-i">I</td>
+                    <td class="raci-c">C</td>
+                </tr>
+                <tr>
+                    <td class="activity-col">Test di integrazione</td>
+                    <td class="raci-a">A</td>
+                    <td class="raci-r">R</td>
+                    <td class="raci-r">R</td>
+                    <td class="raci-r">R</td>
+                    <td class="raci-c">C</td>
+                    <td class="raci-c">C</td>
+                </tr>
+                <tr>
+                    <td class="activity-col">Formazione utenti finali</td>
+                    <td class="raci-c">C</td>
+                    <td class="raci-c">C</td>
+                    <td class="raci-c">C</td>
+                    <td class="raci-a">A</td>
+                    <td class="raci-c">C</td>
+                    <td class="raci-i">I</td>
+                </tr>
+                <tr>
+                    <td class="activity-col">Validazione dati migrazione</td>
+                    <td class="raci-a">A</td>
+                    <td class="raci-c">C</td>
+                    <td class="raci-r">R</td>
+                    <td class="raci-r">R</td>
+                    <td class="raci-c">C</td>
+                    <td class="raci-i">I</td>
+                </tr>
+                <tr>
+                    <td class="activity-col">Monitoraggio flusso verso SIGES</td>
+                    <td class="raci-a">A</td>
+                    <td class="raci-c">C</td>
+                    <td class="raci-r">R</td>
+                    <td class="raci-c">C</td>
+                    <td class="raci-c">C</td>
+                    <td class="raci-i">I</td>
+                </tr>
+                <tr>
+                    <td class="activity-col">Go-live sistema</td>
+                    <td class="raci-a">A</td>
+                    <td class="raci-r">R</td>
+                    <td class="raci-r">R</td>
+                    <td class="raci-r">R</td>
+                    <td class="raci-c">C</td>
+                    <td class="raci-c">C</td>
+                </tr>
+                <tr>
+                    <td class="activity-col">Supporto post go-live</td>
+                    <td class="raci-r">R</td>
+                    <td class="raci-r">R</td>
+                    <td class="raci-r">R</td>
+                    <td class="raci-r">R</td>
+                    <td class="raci-c">C</td>
+                    <td class="raci-a">A</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="roles-section">
+            <h3>Responsabilità Specifiche OPBG:</h3>
+            
+            <div class="role-item">
+                <div class="role-title">Liberti Fabio - PM OPBG (Gestione Amministrativa Ciclo Attivo - FARMED)</div>
+                <ul>
+                    <li><strong>Coordinatore Generale Progetto OPBG</strong> e <strong>BK Interfaccia Tecnologica con Regione Lazio e LAZIOcrea</strong></li>
+                    <li>Responsabile funzionale dati FARMED</li>
+                    <li>Validazione logiche contabili FARMED</li>
+                    <li>Controllo coerenza dati economici flusso</li>
+                    <li>Controllo processo funzionale flusso (bottom-up)</li>
+                    <li>Monitoraggio processo e migrazione dati alla regione (SIGES)</li>
+                    <li>Gestione escalation OPBG</li>
+                </ul>
+            </div>
+            
+            <div class="role-item">
+                <div class="role-title">Donatelli David (Sistemi Informativi - File F)</div>
+                <ul>
+                    <li>Responsabile funzionale e tecnico implementazione File F</li>
+                    <li>Validazione funzionale File F</li>
+                    <li>Controlli tecnici integrazione con File F</li>
+                    <li>Testing tecnico File F</li>
+                </ul>
+            </div>
+            
+            <div class="role-item">
+                <div class="role-title">Pelosi Simone (Sistemi Informativi FARMED - Referente Tecnologico Regione)</div>
+                <ul>
+                    <li><strong>Interfaccia Tecnologica con Regione Lazio e LAZIOcrea</strong></li>
+                    <li>Responsabile tecnico implementazione FARMED e integrazioni</li>
+                    <li>Interfaccia sistemi informativi per lo sviluppo</li>
+                    <li>Coordinamento con Software House OPBG</li>
+                    <li>Gestione aspetti infrastrutturali</li>
+                    <li>Backup e recovery procedure</li>
+                </ul>
+            </div>
+            
+            <div class="role-item">
+                <div class="role-title">Corsetti Tiziana (Farmacia - Referente Clinico Regione)</div>
+                <ul>
+                    <li><strong>Interfaccia Clinica/Funzionale con Regione Lazio e LAZIOcrea</strong></li>
+                    <li>Responsabile funzionale/clinico flusso farmacia</li>
+                    <li>Validazione dati clinici e farmaceutici</li>
+                    <li>Formazione staff farmacia</li>
+                    <li>Controllo qualità dati</li>
+                </ul>
+            </div>
+            
+            <div class="role-item">
+                <div class="role-title">Brusco Carla (Servizio Informativo Ospedaliero)</div>
+                <ul>
+                    <li>Responsabile flusso servizio informativo ospedaliero (SIO)</li>
+                    <li>Gestione integrazione anagrafiche assistiti</li>
+                    <li>Verifica funzionale integrazione con sistema SIO</li>
+                    <li>Validazione conformità</li>
+                </ul>
+            </div>
+            
+            <div class="role-item">
+                <div class="role-title">Software House OPBG</div>
+                <ul>
+                    <li>Sviluppo customizzazioni</li>
+                    <li>Implementazione tracciati XML</li>
+                    <li>Sviluppo interfacce automatiche M2M</li>
+                    <li>Supporto tecnico specializzato</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="timeline">
+            <h3>Timeline Specifica OPBG:</h3>
+            <ul>
+                <li><strong>Settembre 2025:</strong> Kick-off progetto, definizione team</li>
+                <li><strong>Ottobre 2025:</strong> Analisi AS-IS e gap analysis</li>
+                <li><strong>Novembre-Dicembre 2025:</strong> Sviluppo e configurazioni</li>
+                <li><strong>Gennaio-Febbraio 2026:</strong> Test e validazioni</li>
+                <li><strong>Marzo-Aprile 2026:</strong> Formazione e preparazione go-live</li>
+                <li><strong>Maggio 2026:</strong> Go-live pilota</li>
+                <li><strong>Giugno 2026:</strong> Avvio a regime</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        // Funzione per la stampa automatica
+        window.onload = function() {
+            // Commenta la riga seguente se non vuoi la stampa automatica
+            // window.print();
+        };
+    </script>
+</body>
+</html>
